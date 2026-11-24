@@ -389,7 +389,13 @@
   .portfolio-gallery button{border:0;padding:0;min-width:0;background:none;cursor:zoom-in}
   .portfolio-gallery button.wide{grid-column:1/-1}
   .portfolio-gallery button img{max-height:340px}
-  #serviceList .link-note,#contactList .link-note{display:block}
+  #contactList .link-note{display:block}
+  /* Центр видимой части логотипа с учётом прозрачных полей в PNG. */
+  [data-case="vk"] > .case-logo,#case-vk .case-top-visual > .case-logo{
+    translate:-14.1% -4.8%;transform-origin:64.1% 54.8%
+  }
+  .approach-list li{padding:14px 16px;border:1px solid #d9dad4;border-radius:16px;background:#fff}
+  .approach-list p{margin-top:4px;color:#52544F;font-size:13px;line-height:1.5}
 .channel-icon{background:#e4e7ea}
   #case-gp .channel-icon{background:#FBDC22}
   .channel-icon.brand-icon{background:var(--brand-color);color:#fff}
@@ -474,7 +480,7 @@
       <span class="bigD dBot">Д</span>
       <div class="half-inner">
         <h2>Работа</h2>
-        <div class="sub">кейсы · услуги</div>
+        <div class="sub">кейсы · контакты</div>
         <div class="home-chips" id="workChips"></div>
         <span class="hbtn">Открыть →</span>
       </div>
@@ -514,15 +520,15 @@
       <div class="sec case-filter-title" id="cases">Кейсы <button class="case-filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="caseFilters">Фильтр</button></div>
       <div id="caseFilters" class="case-filters" role="group" aria-label="Фильтр кейсов" hidden></div>
       <div class="cases" id="caseCards"></div>
-      <div class="sec" id="services">Услуги</div>
-      <ul class="links" id="serviceList"></ul>
+      <div class="sec" id="approach">Как я работаю</div>
+      <ul class="links approach-list" id="approachList" aria-labelledby="approach"></ul>
       <a class="cta" href="https://t.me/Danslav03" target="_blank">Обсудить проект в Telegram</a>
       <div class="sec" id="contacts">Контакты</div>
       <ul class="links" id="contactList"></ul>
     </div>
   </section>
   <section id="brief" class="view case-view">
-    <div class="topbar"><button class="back" type="button" onclick="go('services')">← услуги</button></div>
+    <div class="topbar"><button class="back" type="button" onclick="go('contacts')">← контакты</button></div>
     <div class="page-body">
       <h1>Короткий бриф</h1>
       <p class="case-p">Telegram откроется с готовым черновиком.</p>
@@ -700,48 +706,10 @@ const DATA = {
     "automation": "Автоматизация",
     "research": "Аналитика и B2B"
   },
-  "services": [
-    {
-      "id": "video",
-      "title": "Монтаж и продакшен",
-      "text": "YouTube, Shorts и Reels. Сценарий, монтаж, озвучка, титры, графика и обложки.",
-      "example": "warpath"
-    },
-    {
-      "id": "content",
-      "title": "SMM и контент",
-      "text": "Контент-план, рубрики, тексты, карусели и оформление каналов.",
-      "example": "vk"
-    },
-    {
-      "id": "sites",
-      "title": "Сайты и визитки",
-      "text": "Структура, тексты, дизайн, адаптивная вёрстка и публикация.",
-      "example": "dubai"
-    },
-    {
-      "id": "ads",
-      "title": "Реклама в Яндекс Директе",
-      "text": "Объявления, креативы, настройка целей и отчёт по кампании.",
-      "example": "gp"
-    },
-    {
-      "id": "automation",
-      "title": "Telegram-боты и автоматизация",
-      "text": "Боты для выдачи материалов и модерации, генераторы карточек и инструменты для монтажа.",
-      "example": "warpath"
-    },
-    {
-      "id": "research",
-      "title": "B2B-исследования и базы",
-      "text": "Сегментация по отраслям, проверка компаний по ИНН, сбор рабочих контактов и оформление базы.",
-      "example": "data"
-    }
-  ],
   "experience": [
     {
       "id": "vk",
-      "text": "Стратегия и оформление соцсетей, рубрики, карусели, сценарии, настройка меток."
+      "text": "Полный цикл SMM, ежедневные публикации и вертикальные видео с ИИ-аватаром в HeyGen."
     },
     {
       "id": "dubai",
@@ -804,7 +772,7 @@ const DATA = {
       "id": "vk",
       "num": "01",
       "title": "Ваша Команда",
-      "tagline": "юридическая компания · банкротство физлиц · 4 города",
+      "tagline": "SMM полного цикла · контент каждый день",
       "badge": {
         "ring": "#CBA135",
         "fill": "#1C0606",
@@ -824,12 +792,13 @@ const DATA = {
         "video",
         "automation"
       ],
-      "task": "Оформить соцсети компании в четырёх городах и простыми словами объяснять этапы банкротства и работу с долгами.",
+      "task": "Наладить ежедневную работу соцсетей компании в четырёх городах и простыми словами рассказывать о банкротстве и работе с долгами.",
       "done": [
-        "Провёл аудит площадок и конкурентов. Собрал рубрикатор и единый шаблон оформления.",
-        "Обновил обложки, аватары, меню и закрепы. Настраивал выдачу материалов через бота.",
-        "Пишу посты, делаю карусели и сценарии вертикальных видео. Подготовил варианты брошюры и генератор карточек.",
-        "Настраивал UTM-метки и собирал отчёты по переходам и обращениям."
+        "Выстроил полный цикл SMM от контент-плана и подготовки материалов до публикаций и отчётности. Контент выходит каждый день.",
+        "Провёл аудит площадок и конкурентов. Собрал рубрикатор, оформил сообщества и сделал единый шаблон карточек.",
+        "Создал ИИ-аватара в HeyGen для вертикальных роликов. Пишу сценарии и собираю видео с субтитрами и графикой.",
+        "Подготовил варианты брошюры и генератор карточек. Настроил выдачу материалов через бота.",
+        "Настроил UTM-метки и собираю данные о переходах и обращениях."
       ],
       "figures": [
         {
@@ -1265,7 +1234,7 @@ const DATA = {
       "id": "warpath",
       "num": "05",
       "title": "Warpath",
-      "tagline": "мерч блогера-миллионника · семейный проект · Tesla-комьюнити",
+      "tagline": "Digital-помощник",
       "badge": {
         "ring": "#9B2DB5",
         "fill": "#0A0A0A",
@@ -1279,7 +1248,7 @@ const DATA = {
         "heroPhoto": WARPATH_PLAID
       },
       "detailTitle": "Warpath",
-      "role": "Монтажёр и digital-помощник",
+      "role": "Digital-помощник",
       "period": "Семейный проект",
       "tags": [
         "video",
@@ -1287,12 +1256,13 @@ const DATA = {
         "content",
         "automation"
       ],
-      "task": "Помочь с контентом и инструментами для аудитории Warpath: короткими видео, оформлением каналов, ботами и сайтом мерча.",
+      "task": "Наладить выпуск коротких роликов из длинных видео Warpath и собрать инструменты для каналов и сообщества.",
       "done": [
-        "Оформил каналы Warpath Rofls и «Гараж Варпача». Из длинных выпусков собираю вертикальные клипы с субтитрами.",
-        "Собрал локальный прототип Clip Studio для работы с расшифровкой, чернового предпросмотра и вертикального экспорта.",
-        "Спроектировал бота с гайдами и настроил антиспам в чате.",
-        "Собрал витрину WARPATH STORE. Участвовал в съёмках двух эпизодов Tesla Trip."
+        "Выстроил полный цикл нарезок из длинных выпусков. Отбираю цельные сюжеты, монтирую вертикальные ролики, добавляю субтитры и довожу до выкладки.",
+        "Оформил каналы Warpath Rofls и «Гараж Варпача».",
+        "Собрал локальный прототип Clip Studio для работы с расшифровками, чернового предпросмотра и вертикального экспорта.",
+        "Участвовал в съёмках многих видео для канала Warpath.",
+        "Собрал витрину WARPATH STORE. Спроектировал бота с гайдами и настроил антиспам в чате."
       ],
       "figures": [
         {
@@ -1348,10 +1318,6 @@ const DATA = {
       ],
       "links": [
         {
-          "title": "Warpath Rofls",
-          "url": "https://www.youtube.com/@WarpathROFLS/shorts"
-        },
-        {
           "title": "Витрина WARPATH STORE",
           "url": "https://danslav03.github.io/Wstore/"
         },
@@ -1359,7 +1325,11 @@ const DATA = {
           "title": "YouTube Warpath",
           "url": "https://www.youtube.com/@warpath031/videos"
         }
-      ]
+      ],
+      "primaryLink": {
+        "title": "Warpath Rofls на YouTube",
+        "url": "https://www.youtube.com/@WarpathROFLS/shorts"
+      }
     },
     {
       "id": "daria",
@@ -1480,12 +1450,52 @@ const DATA = {
     ],
     "metricNote": "Просмотры YouTube на 23 ноября 2026.",
     "reels": "https://www.instagram.com/danslav03/reel/DgDE9ZMBZAV/"
-  }
+  },
+  "briefTopics": [
+    {
+      "id": "video",
+      "title": "Монтаж и продакшен"
+    },
+    {
+      "id": "content",
+      "title": "SMM и контент"
+    },
+    {
+      "id": "sites",
+      "title": "Сайты и визитки"
+    },
+    {
+      "id": "ads",
+      "title": "Реклама в Яндекс Директе"
+    },
+    {
+      "id": "automation",
+      "title": "Telegram-боты и автоматизация"
+    },
+    {
+      "id": "research",
+      "title": "B2B-исследования и базы"
+    }
+  ],
+  "approach": [
+    {
+      "title": "Веду проекты самостоятельно",
+      "text": "Берусь за весь цикл от задачи и плана до выпуска и отчёта."
+    },
+    {
+      "title": "Сокращаю ручную работу",
+      "text": "Собираю ботов, генераторы карточек и инструменты для серийного монтажа."
+    },
+    {
+      "title": "Проверяю результат",
+      "text": "Смотрю удержание роликов и цели рекламы, а компании в B2B-базах сверяю по ИНН."
+    }
+  ]
 };
 const byId = id => document.getElementById(id);
 const tgCandidate = window.Telegram?.WebApp;
 const tg = tgCandidate?.initData || (tgCandidate?.platform && tgCandidate.platform !== "unknown") ? tgCandidate : null;
-const sectionRoutes = new Set(["home", "life", "danslav-videos", "work", "cases", "about", "services", "contacts", "brief", "resume"]);
+const sectionRoutes = new Set(["home", "life", "danslav-videos", "work", "cases", "about", "approach", "contacts", "brief", "resume"]);
 const initialTitle = document.title;
 let currentView = "home";
 
@@ -1500,8 +1510,8 @@ function updateBackButton() {
 }
 
 function showView(id) {
-  if (id === "case-danslav") {
-    id = "danslav-videos";
+  if (id === "case-danslav" || id === "services") {
+    id = id === "services" ? "approach" : "danslav-videos";
     history.replaceState(null, "", "#" + id);
   }
   const target = sectionRoutes.has(id) || (id.startsWith("case-") && DATA.cases.some(item => "case-" + item.id === id))
@@ -1537,7 +1547,7 @@ function initialiseNavigation() {
     tg.BackButton?.onClick(() => {
       const dialog = openDialog();
       if (dialog) dialog.close();
-      else if (currentView === "brief") go("services");
+      else if (currentView === "brief") go("contacts");
       else if (currentView === "resume") go("about");
       else if (currentView.startsWith("case-")) go("work");
       else if (currentView !== "home") go("home");
@@ -1777,6 +1787,7 @@ function renderCases(){
         ${caseTopVisualHtml(c)}
         <h1>${c.detailTitle || c.title}</h1>
         <p class="bio">${c.role}</p>
+        ${c.primaryLink ? `<p class="case-p"><a href="${escapeText(c.primaryLink.url)}" target="_blank" rel="noopener noreferrer">${escapeText(c.primaryLink.title)} ↗</a></p>` : ""}
         <div class="sec">Задача</div>
         <p class="case-p">${c.task}</p>
         <div class="sec">Что сделал</div>
@@ -1802,7 +1813,7 @@ function renderCases(){
   // чипы кейсов на главной
   document.getElementById('workChips').innerHTML =
     DATA.cases.map(c=>`<span class="hchip">Кейс ${c.num} · ${c.title}</span>`).join('') +
-    `<span class="hchip">услуги · контакты</span>`;
+    `<span class="hchip">подход · контакты</span>`;
 }
 
 function renderContacts(){
@@ -1872,12 +1883,13 @@ const project = DATA.lifeProject;
     + '<p class="life-project-numbers">' + project.figures.map(item => escapeText(item.n + " · " + item.l)).join("<br>") + '</p>'
     + '<p class="life-project-date">' + escapeText(project.metricNote) + '</p>'
     + '<a href="' + escapeText(project.reels) + '" target="_blank" rel="noopener noreferrer">Tesla в Instagram Reels ↗</a>';
-  byId("serviceList").innerHTML = DATA.services.map((service, index) => listLink(
-    service.title, service.text, "№ " + (index + 1), "#brief", 'data-service="' + service.id + '"')).join("");
+  byId("approachList").innerHTML = DATA.approach.map(item => '<li><h2 class="link-title">'
+    + escapeText(item.title) + '</h2><p>' + escapeText(item.text) + '</p></li>').join("");
   byId("briefService").innerHTML = '<option value="">Другая задача</option>'
-    + DATA.services.map(service => '<option value="' + service.id + '">' + escapeText(service.title) + '</option>').join("");
+    + DATA.briefTopics.map(topic => '<option value="' + topic.id + '">' + escapeText(topic.title) + '</option>').join("");
   byId("contactList").insertAdjacentHTML("beforeend",
-    listLink("Сохранить контакт", "Файл vCard", "VCF", vcardLink(), 'download="danil-petrov.vcf"')
+    listLink("Короткий бриф", "Открыть черновик в Telegram", "TG", "#brief")
+    + listLink("Сохранить контакт", "Файл vCard", "VCF", vcardLink(), 'download="danil-petrov.vcf"')
     + listLink("QR-код визитки", "", "QR", "#contacts", 'data-qr')
     + listLink("Поделиться визиткой", "", "URL", "#contacts", 'data-share')
     + listLink("Краткое резюме", "Для печати и сохранения в PDF", "PDF", "#resume"));
@@ -1962,8 +1974,8 @@ function submitBrief(event) {
     field.reportValidity();
     return;
   }
-  const service = DATA.services.find(item => item.id === byId("briefService").value);
-  const draft = "Данил, привет!" + (service ? "\nНаправление: " + service.title : "") + "\nЗадача: " + task;
+  const topic = DATA.briefTopics.find(item => item.id === byId("briefService").value);
+  const draft = "Данил, привет!" + (topic ? "\nНаправление: " + topic.title : "") + "\nЗадача: " + task;
   const url = "https://t.me/" + DATA.contacts.tg + "?text=" + encodeURIComponent(draft);
   if (tg?.openTelegramLink) {
     try {
@@ -2035,7 +2047,6 @@ document.addEventListener("click", event => {
   const anchor = element.closest('a[href^="#"]');
   if (anchor && event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
     event.preventDefault();
-    if (anchor.dataset.service) byId("briefService").value = anchor.dataset.service;
     go(anchor.hash.slice(1));
   }
 });
