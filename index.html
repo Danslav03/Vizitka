@@ -390,6 +390,36 @@
   .portfolio-gallery button.wide{grid-column:1/-1}
   .portfolio-gallery button img{max-height:340px}
   #serviceList .link-note,#contactList .link-note{display:block}
+.channel-icon{background:#e4e7ea}
+  #case-gp .channel-icon{background:#FBDC22}
+  .channel-icon.brand-icon{background:var(--brand-color);color:#fff}
+  .channel-icon.brand-icon svg{display:block;fill:currentColor}
+  .link-main .link-note{display:block}
+  .life-project{margin-top:14px;padding:13px 14px;border-left:3px solid var(--rec-red);border-radius:14px;background:var(--card)}
+  .life-project summary{cursor:pointer;color:var(--rec-soft);font-size:14px;font-weight:800}
+  .life-project p,.life-project li{color:#C2C2C9;font-size:13px;line-height:1.52}
+  .life-project p{margin-top:10px}
+  .life-project ul{padding-left:18px;display:grid;gap:5px;margin-top:9px}
+  .life-project .life-project-numbers{color:var(--rec-soft);font-weight:700}
+  .life-project .life-project-date{font-size:11px;color:#A5A5AF}
+  .life-project a{display:inline-block;margin-top:10px;color:#FF8999;font-weight:800;font-size:13px;text-underline-offset:3px}
+  .case-card[data-case="data"],.b2b-cover{
+    background-color:#10271F;
+    background-image:linear-gradient(115deg,#112E24 8%,#0B2019 58%,#173D2E 100%);
+    position:relative;isolation:isolate;overflow:hidden
+  }
+  .case-card[data-case="data"]::before,.b2b-cover::before{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:linear-gradient(90deg,#10271F 10%,transparent 60%),repeating-linear-gradient(0deg,#9FF0BF17 0 1px,transparent 1px 13px),repeating-linear-gradient(90deg,#9FF0BF17 0 1px,transparent 1px 13px)
+  }
+  .case-card[data-case="data"] .case-badge,.b2b-cover .case-badge{
+    padding:7px;background:#102C21;border:1px solid #3F846B;border-radius:16px;
+    filter:drop-shadow(0 0 12px #90F2C032)
+  }
+  .case-card[data-case="data"] .case-tagline{opacity:1}
+  .b2b-card-metric{align-self:flex-start;border:1px solid #3F846B;border-radius:99px;padding:2px 8px;
+    background:#16382B;color:#CBF8DE;font-size:11px;font-weight:800;white-space:nowrap}
+  .b2b-cover{display:grid;place-items:center;min-height:130px;border:1px solid #3F846B;border-radius:16px;margin:8px 0 12px}
   .inline-action{display:block;margin:12px auto 0;text-align:center}
   .brief-form{display:grid;gap:8px;margin-top:18px}
   .brief-form label{font-size:13px;font-weight:800}
@@ -467,8 +497,9 @@
       <div class="sec">Соцсети</div>
       <div class="socials" id="socials"></div>
       <div class="stats-note" id="statsNote"></div>
-      <div class="sec">Ролики Danslav</div>
+      <div class="sec" id="danslav-videos">Ролики Danslav</div>
       <div id="lifeWorks"></div>
+      <details class="life-project"><summary>Как я делаю ролики</summary><div id="lifeProject"></div></details>
     </div>
   </section>
 
@@ -674,7 +705,7 @@ const DATA = {
       "id": "video",
       "title": "Монтаж и продакшен",
       "text": "YouTube, Shorts и Reels. Сценарий, монтаж, озвучка, титры, графика и обложки.",
-      "example": "danslav"
+      "example": "warpath"
     },
     {
       "id": "content",
@@ -835,22 +866,20 @@ const DATA = {
         }
       ],
       "videos": [],
-      "links": [
-        {
-          "title": "Telegram",
-          "url": "https://t.me/vkomanda_NVKZ"
-        }
-      ],
+      "links": [],
       "channels": [
         {
-          "img": ICON_VK,
-          "selfBadge": true,
+          "icon": "vk",
           "title": "ВКонтакте",
           "url": "https://vk.com/vkomanda.nvkz"
         },
         {
-          "img": ICON_YT,
-          "selfBadge": true,
+          "icon": "telegram",
+          "title": "Telegram",
+          "url": "https://t.me/vkomanda_NVKZ"
+        },
+        {
+          "icon": "youtube",
           "title": "YouTube",
           "url": "https://www.youtube.com/@vkomanda"
         }
@@ -1389,16 +1418,16 @@ const DATA = {
       "id": "data",
       "num": "07",
       "title": "Базы клиентов для B2B",
-      "tagline": "производство · переработка · данные для продаж",
+      "tagline": "Реестр предприятий для промышленных продаж",
       "badge": {
-        "ring": "#3BA55D",
-        "fill": "#0F1A14",
+        "ring": "#3F846B",
+        "fill": "#10271F",
         "glyph": "factory",
-        "glyphColor": "#3BA55D",
+        "glyphColor": "#81E4B4",
         "textAccent": true,
         "dark": true,
-        "textColor": "#DDEFE3",
-        "titleColor": "#FFFFFF"
+        "textColor": "#B9DCC9",
+        "titleColor": "#F5FBF6"
       },
       "detailTitle": "Базы клиентов для B2B",
       "role": "B2B-исследователь",
@@ -1426,95 +1455,37 @@ const DATA = {
       "metricNote": "",
       "galleries": [],
       "videos": [],
-      "links": []
-    },
-    {
-      "id": "danslav",
-      "num": "08",
-      "title": "Danslav",
-      "tagline": "авторский канал · GTA VI · Tesla",
-      "badge": {
-        "ring": "#FF2E4D",
-        "fill": "#161118",
-        "dark": true,
-        "textColor": "#F5EFEA",
-        "titleColor": "#FFFFFF",
-        "glyph": "car",
-        "glyphColor": "#FF2E4D"
-      },
-      "detailTitle": "Danslav",
-      "role": "Автор, монтажёр и ведущий",
-      "period": "Видео с 2020 года",
-      "tags": [
-        "video",
-        "content",
-        "research"
-      ],
-      "task": "В серии о GTA VI каждый ролик отвечает на конкретный вопрос. Ответ виден в игровом кадре, а озвучка помогает заметить детали.",
-      "done": [
-        "Исследую темы и сверяю утверждения с кадрами. Пишу короткий сценарий под конкретную сцену и записываю голос.",
-        "Монтирую версии для Shorts, Reels и TikTok. Проверяю читаемость текста и действие в первые три секунды.",
-        "Сравниваю выпуски по просмотрам, удержанию и реакциям. На этих данных выбираю темы и меняю подачу."
-      ],
-      "figures": [
-        {
-          "n": "37 тыс.+",
-          "l": "Shorts про поезд"
-        },
-        {
-          "n": "32 тыс.+",
-          "l": "Shorts про зарядку Tesla"
-        }
-      ],
-      "metricNote": "Просмотры YouTube на 23 ноября 2026.",
-      "galleries": [],
-      "videos": [
-        {
-          "title": "Сколько стоит зарядить Tesla в GTA VI",
-          "tag": "YouTube Shorts",
-          "meta": "",
-          "url": "https://www.youtube.com/shorts/cMTfpv72fYs",
-          "image": GTA_TESLA,
-          "hue": 228
-        },
-        {
-          "title": "Может ли машина остановить поезд в GTA VI",
-          "tag": "YouTube Shorts",
-          "meta": "",
-          "url": "https://www.youtube.com/shorts/eVA5F0H_rQs",
-          "image": GTA_TRAIN,
-          "hue": 228
-        },
-        {
-          "title": "Как погоня в GTA VI заканчивается боем истребителей",
-          "tag": "YouTube Shorts",
-          "meta": "",
-          "url": "https://www.youtube.com/shorts/6eRozSEdOio",
-          "image": GTA_CHASE,
-          "hue": 228
-        }
-      ],
-      "links": [
-        {
-          "title": "YouTube Danslav",
-          "url": "https://www.youtube.com/@Danslav"
-        },
-        {
-          "title": "Канал в Telegram",
-          "url": "https://t.me/danslav0303"
-        },
-        {
-          "title": "Tesla в Instagram Reels",
-          "url": "https://www.instagram.com/danslav03/reel/DgDE9ZMBZAV/"
-        }
-      ]
+      "links": [],
+      "cardMetric": "472 предприятия"
     }
-  ]
+  ],
+  "lifeProject": {
+    "detailTitle": "Danslav",
+    "period": "Видео с 2020 года",
+    "task": "В серии о GTA VI каждый ролик отвечает на конкретный вопрос. Ответ виден в игровом кадре, а озвучка помогает заметить детали.",
+    "done": [
+      "Исследую темы и сверяю утверждения с кадрами. Пишу короткий сценарий под конкретную сцену и записываю голос.",
+      "Монтирую версии для Shorts, Reels и TikTok. Проверяю читаемость текста и действие в первые три секунды.",
+      "Сравниваю выпуски по просмотрам, удержанию и реакциям. На этих данных выбираю темы и меняю подачу."
+    ],
+    "figures": [
+      {
+        "n": "37 тыс.+",
+        "l": "Shorts про поезд"
+      },
+      {
+        "n": "32 тыс.+",
+        "l": "Shorts про зарядку Tesla"
+      }
+    ],
+    "metricNote": "Просмотры YouTube на 23 ноября 2026.",
+    "reels": "https://www.instagram.com/danslav03/reel/DgDE9ZMBZAV/"
+  }
 };
 const byId = id => document.getElementById(id);
 const tgCandidate = window.Telegram?.WebApp;
 const tg = tgCandidate?.initData || (tgCandidate?.platform && tgCandidate.platform !== "unknown") ? tgCandidate : null;
-const sectionRoutes = new Set(["home", "life", "work", "cases", "about", "services", "contacts", "brief", "resume"]);
+const sectionRoutes = new Set(["home", "life", "danslav-videos", "work", "cases", "about", "services", "contacts", "brief", "resume"]);
 const initialTitle = document.title;
 let currentView = "home";
 
@@ -1529,6 +1500,10 @@ function updateBackButton() {
 }
 
 function showView(id) {
+  if (id === "case-danslav") {
+    id = "danslav-videos";
+    history.replaceState(null, "", "#" + id);
+  }
   const target = sectionRoutes.has(id) || (id.startsWith("case-") && DATA.cases.some(item => "case-" + item.id === id))
     ? byId(id) : null;
   const next = target?.closest(".view") || byId("home");
@@ -1544,7 +1519,7 @@ function showView(id) {
   }
   document.title = next.id.startsWith("case-")
     ? next.querySelector("h1").textContent + " · Данил Петров"
-    : next.id === "resume" ? "Данил Петров · резюме" : initialTitle;
+    : next.id === "resume" ? "Данил Петров · резюме" : next.id === "life" ? "Danslav · Жизнь" : initialTitle;
   updateBackButton();
 }
 
@@ -1637,13 +1612,62 @@ const PLATFORM_ICONS = {
   su: `<text x="50" y="59" font-family="Manrope,sans-serif" font-weight="800" font-size="22" text-anchor="middle" fill="#171717">СУ</text>`,
 };
 
-function channelIconHtml(ch){
-  if (ch.img) {
-    return ch.selfBadge
-      ? `<img class="channel-icon-img" src="${ch.img}" alt="">`
-      : `<span class="channel-icon"><img src="${ch.img}" alt="" style="width:68%;height:68%;object-fit:contain"></span>`;
+// Иконки соцсетей: https://github.com/simple-icons/simple-icons (CC0)
+const BRAND_ICONS = {
+  "vk": {
+    "color": "#0077FF",
+    "path": "m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.74-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"
+  },
+  "telegram": {
+    "color": "#26A5E4",
+    "path": "M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+  },
+  "youtube": {
+    "color": "#FF0033",
+    "path": "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+  },
+  "instagram": {
+    "color": "#E4405F",
+    "path": "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
+  },
+  "tiktok": {
+    "color": "#111111",
+    "path": "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
   }
-  return `<span class="channel-icon"><svg viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">${PLATFORM_ICONS[ch.icon] || ''}</svg></span>`;
+};
+
+const BRAND_DOMAIN = {
+  "vk.com": "vk", "vk.ru": "vk",
+  "t.me": "telegram", "telegram.me": "telegram",
+  "youtube.com": "youtube", "youtu.be": "youtube",
+  "instagram.com": "instagram", "tiktok.com": "tiktok"
+};
+
+function channelIconHtml(channel, globalPlant = false) {
+  const domain = channel.url ? new URL(channel.url).hostname.replace(/^www\./, "") : "";
+  const key = channel.icon || BRAND_DOMAIN[domain];
+  const brand = BRAND_ICONS[key];
+  if (brand && !globalPlant) {
+    return '<span class="channel-icon brand-icon" data-platform="' + key + '" style="--brand-color:' + brand.color
+      + '"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="'
+      + brand.path + '"/></svg></span>';
+  }
+  if (channel.img) {
+    if (channel.selfBadge) return '<img class="channel-icon-img" src="' + channel.img + '" alt="">';
+    return '<span class="channel-icon"><img src="' + channel.img + '" alt="" style="width:68%;height:68%;object-fit:contain"></span>';
+  }
+  const glyph = PLATFORM_ICONS[key] || PLATFORM_ICONS.www;
+  return '<span class="channel-icon"><svg viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">'
+    + glyph + '</svg></span>';
+}
+
+function caseLinkGroup(title, items, globalPlant) {
+  if (!items?.length) return "";
+  const links = items.map(item => '<li><a href="' + escapeText(item.url) + '" target="_blank" rel="noopener noreferrer">'
+    + channelIconHtml(item, globalPlant) + '<span class="link-main"><span class="link-title">'
+    + escapeText(item.title) + '</span>' + (item.note ? '<span class="link-note">' + escapeText(item.note) + '</span>' : '')
+    + '</span><span class="link-arrow" aria-hidden="true">↗</span></a></li>').join("");
+  return '<div class="sec">' + escapeText(title) + '</div><ul class="links">' + links + '</ul>';
 }
 
 function caseBadgeHtml(c){
@@ -1699,6 +1723,7 @@ function caseHeroHtml(c){
 function caseTopVisualHtml(c){
   const b = c.badge; if (!b) return '';
   let inner;
+  if (c.id === "data") return `<div class="b2b-cover" aria-hidden="true">${caseBadgeHtml(c)}</div>`;
   if (b.heroPhoto) inner = caseHeroHtml(c);
   else if (b.logo) inner = b.logoBackdrop ? `<span class="logo-backdrop" style="background:${b.fill}">${caseLogoHtml(c)}</span>` : caseLogoHtml(c);
   else if (b.photo) inner = caseThumbHtml(c);
@@ -1725,12 +1750,13 @@ function renderCases(){
     const leftHtml = b.logo ? caseLogoHtml(c) : b.flag ? caseFlagHtml(c) : b.youtube ? caseYoutubeHtml(c) : caseBadgeHtml(c);
     const rightHtml = hasLeftVisual ? (b.heroPhoto ? caseHeroHtml(c) : b.photo ? caseThumbHtml(c) : caseBadgeHtml(c)) : '';
     return `
-    <a href="#case-${c.id}" class="case-card${b.dark ? ' dark' : ''}${b.borderGradient ? ' gradient-border' : ''}" ${style}>
+    <a href="#case-${c.id}" data-case="${c.id}" class="case-card${b.dark ? ' dark' : ''}${b.borderGradient ? ' gradient-border' : ''}" ${style}>
       ${leftHtml}
       <div class="case-body">
         <span class="case-num">Кейс ${c.num}</span>
         <span class="case-title">${c.title}</span>
         <span class="case-tagline">${c.tagline}</span>
+        ${c.cardMetric ? `<span class="b2b-card-metric">${escapeText(c.cardMetric)}</span>` : ""}
         <span class="case-go">смотреть кейс →</span>
       </div>
       ${rightHtml}
@@ -1765,16 +1791,8 @@ function renderCases(){
         ${c.proofs && c.proofs.length ? `<div class="sec">Скриншоты с сайта</div>
           <div class="preview-col">${c.proofs.map(u=>`<img class="preview-img" loading="lazy" decoding="async" src="${u}" alt="Скриншот">`).join('')}</div>` : ''}
         ${c.videos && c.videos.length ? `<div class="sec">Видео из проекта</div>` + worksHtml(c.videos) : ''}
-        ${c.links && c.links.length ? `<div class="sec">Ссылки</div><ul class="links">` + c.links.map(l=>`
-          <li><a href="${l.url}" target="_blank">
-            <span class="link-tag">WWW</span>
-            <span class="link-main"><span class="link-title">${l.title}</span><div class="link-note">${l.note}</div></span>
-            <span class="link-arrow">↗</span></a></li>`).join('') + `</ul>` : ''}
-        ${c.channels && c.channels.length ? `<div class="sec">${c.channelsLabel||'Каналы'}</div><ul class="links">` + c.channels.map(ch=>`
-          <li><a href="${ch.url}" target="_blank">
-            ${channelIconHtml(ch)}
-            <span class="link-main"><span class="link-title">${ch.title}</span></span>
-            <span class="link-arrow">↗</span></a></li>`).join('') + `</ul>` : ''}
+        ${caseLinkGroup("Ссылки", c.links, c.id === "gp")}
+        ${caseLinkGroup(c.channelsLabel || "Каналы", c.channels, c.id === "gp")}
         <a class="cta" href="https://t.me/${DATA.contacts.tg}" target="_blank" rel="noopener">Написать мне в Telegram</a>
          <button type="button" class="back inline-action" data-copy-case="${c.id}">Скопировать ссылку на кейс</button>
       </div>`;
@@ -1783,7 +1801,7 @@ function renderCases(){
 
   // чипы кейсов на главной
   document.getElementById('workChips').innerHTML =
-    DATA.cases.slice(0, 7).map(c=>`<span class="hchip">Кейс ${c.num} · ${c.title}</span>`).join('') +
+    DATA.cases.map(c=>`<span class="hchip">Кейс ${c.num} · ${c.title}</span>`).join('') +
     `<span class="hchip">услуги · контакты</span>`;
 }
 
@@ -1791,7 +1809,7 @@ function renderContacts(){
   const c = DATA.contacts; if (!c) return;
   document.getElementById('contactList').innerHTML = `
     <li><a href="https://t.me/${c.tg}" target="_blank">
-      <span class="link-tag">TG</span>
+      ${channelIconHtml({icon:"telegram"})}
       <span class="link-main"><span class="link-title">@${c.tg}</span><div class="link-note">быстрее всего отвечаю тут</div></span>
       <span class="link-arrow">↗</span></a></li>
     <li><a href="tel:${c.phoneRaw}">
@@ -1848,6 +1866,12 @@ function vcardLink() {
 
 function renderExtras() {
   byId("lifeWorks").innerHTML = worksHtml(DATA.featured);
+const project = DATA.lifeProject;
+  byId("lifeProject").innerHTML = '<p>' + escapeText(project.task) + '</p><ul>'
+    + project.done.map(line => '<li>' + escapeText(line) + '</li>').join("") + '</ul>'
+    + '<p class="life-project-numbers">' + project.figures.map(item => escapeText(item.n + " · " + item.l)).join("<br>") + '</p>'
+    + '<p class="life-project-date">' + escapeText(project.metricNote) + '</p>'
+    + '<a href="' + escapeText(project.reels) + '" target="_blank" rel="noopener noreferrer">Tesla в Instagram Reels ↗</a>';
   byId("serviceList").innerHTML = DATA.services.map((service, index) => listLink(
     service.title, service.text, "№ " + (index + 1), "#brief", 'data-service="' + service.id + '"')).join("");
   byId("briefService").innerHTML = '<option value="">Другая задача</option>'
@@ -1859,8 +1883,10 @@ function renderExtras() {
     + listLink("Краткое резюме", "Для печати и сохранения в PDF", "PDF", "#resume"));
 
   const experience = DATA.experience.map(({id, text}) => {
-    const project = DATA.cases.find(item => item.id === id);
-    return '<li><a href="#case-' + id + '">' + escapeText(project.detailTitle) + '</a>'
+    const personal = id === "danslav";
+    const project = personal ? DATA.lifeProject : DATA.cases.find(item => item.id === id);
+    const url = personal ? "#danslav-videos" : "#case-" + id;
+    return '<li><a href="' + url + '">' + escapeText(project.detailTitle) + '</a>'
       + ' · ' + escapeText(project.period) + '<div>' + escapeText(text) + '</div></li>';
   }).join("");
   byId("resumeBody").innerHTML = '<h1>' + escapeText(DATA.name) + '</h1><p class="case-p">Digital-маркетолог и автор видео</p>'
